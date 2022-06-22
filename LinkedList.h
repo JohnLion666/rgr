@@ -6,8 +6,8 @@ template <typename type> class LinkedList{
 
     public:
 
-        element<type> *first;
-        element<type> *last;
+        element<type>* first;
+        element<type>* last;
         int counter;
         LinkedList();
         ~LinkedList();

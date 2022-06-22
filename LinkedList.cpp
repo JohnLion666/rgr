@@ -1,20 +1,33 @@
-
 #include "LinkedList.h"
+// #include <iostream>
 
 template<typename type>
 LinkedList<type>::LinkedList(){
     counter = 0;
     first = nullptr;
 }
-template<typename type> void LinkedList<type>::add2end(type _data){
+template<typename type> 
+void LinkedList<type>::add2end(type _data){
     if(first == nullptr){
-        first = new element<type>(_data, nullptr, nullptr);
-        counter++;
+        this->first = new element<type>(_data, nullptr, nullptr);
+        this->last = this->first;
+        this->counter++;
     }else{
-        // new element<type>(_data, nullptr, prev);
+        this->counter++;
+        element<type> * now = this->last;
+        element<type>* a = new element<type>(_data, nullptr, now);
+        
+        this->last = a;
     }
 }
+template<typename type> 
+void LinkedList<type>::add2start(type _data){
+    // if()
+}
+template<typename type>
+void LinkedList<type>::add2pos(type _data, int pos){
 
+}
 
 
 
