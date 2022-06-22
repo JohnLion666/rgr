@@ -1,29 +1,21 @@
-#include <iostream>
+#include "element.h"
 
-struct LinkedList
-{
-    
-    LinkedList(std::string str, LinkedList *_next, LinkedList *_prev){
-        std::string data=str;
-        LinkedList* next = _next;
-        LinkedList* prev = _prev;
-    };
-    LinkedList(int num, LinkedList *_next, LinkedList *_prev){
-        int data = num;
-        LinkedList* next = _next;
-        LinkedList* prev = _prev;
-    };
-    LinkedList(double number, LinkedList *_next, LinkedList *_prev){
-        double data = number;
-        LinkedList* next = _next;
-        LinkedList* prev = _prev;
-    };
-    
+
+template <typename type> class LinkedList{
+        
+
+    public:
+
+        element<type> *first;
+        element<type> *last;
+        int counter;
+        LinkedList();
+        ~LinkedList();
+        void add2end(type data);
+        void add2start(type data);
+        void add2pos(type data, int cout);
+
+
+        void show();
 };
- LinkedList* first;
-// LinkedList* last;
-void addEllement(std::string, LinkedList*);
 
-void addEllement(int, LinkedList*);
-
-void addEllement(double, LinkedList*);
