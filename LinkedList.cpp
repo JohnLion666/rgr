@@ -37,7 +37,11 @@ void LinkedList<type>::add2begin(type _data){
 }
 template<typename type>
 void LinkedList<type>::add2pos(type _data, int pos){
-    if(this->counter >pos-1){
+    if(pos<1){
+        std::cerr<<"Exception! out of range adding to pos "<<pos<<" data "<<_data<<"\n";
+        std::cerr<<"Addin element to the begining of list\n";
+        add2begin(_data);
+    }else if(this->counter >pos-1){
         int counter=0;
         element<type> *current = this->first;
         while (counter<pos-1){
@@ -69,17 +73,9 @@ void LinkedList<type>::show(){
         
 }
 
-
-
-
-
-
-
-
-
-
-
-
 template<typename type>
 LinkedList<type>::~LinkedList(){
+    delete this->first;
+    delete this->last;
+    delete &this->counter;
 }
