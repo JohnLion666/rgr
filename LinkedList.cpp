@@ -1,5 +1,5 @@
 #include "LinkedList.h"
-// #include <iostream>
+#include <iostream>
 
 template<typename type>
 LinkedList<type>::LinkedList(){
@@ -14,19 +14,58 @@ void LinkedList<type>::add2end(type _data){
         this->counter++;
     }else{
         this->counter++;
-        element<type> * now = this->last;
-        element<type>* a = new element<type>(_data, nullptr, now);
-        
-        this->last = a;
+        element<type> * now = this->first;
+        while (now->next!=nullptr){
+            now = now->next;
+        }
+        now->next = new element<type>(_data, nullptr, nullptr);
+                
     }
 }
 template<typename type> 
-void LinkedList<type>::add2start(type _data){
-    // if()
+void LinkedList<type>::add2begin(type _data){
+    if(first==nullptr){
+        this->counter++;
+        first = new element<type>(_data, nullptr, nullptr);
+    }else{
+        this->counter++;
+
+        element<type> *now = this->first;
+        first = new element<type>(_data, now, nullptr);
+        
+    }
 }
 template<typename type>
 void LinkedList<type>::add2pos(type _data, int pos){
+    try{
+        int counter=0;
+        element<type> *current = this->first;
+        while (counter<pos)
+        {
+            current = current->next;
+        }
+        element<type>* next = current->next;
+        element<type>* prev = current;
+        prev->next = new element<type>(_data, next,nullptr);
 
+    }
+    catch(const std::exception& e){
+        std::cerr << e.what() << '\n';//скоріш за все буде  out of range list
+    }
+    
+}
+
+
+//out list in sout
+template<typename type> 
+void LinkedList<type>::show(){
+    element<type> * current = first;
+    while(current->next!=0){
+        std::cout<<"data: "<<current->data<<"; next: "<<current->next<<"\n";
+        current = current->next;
+    }
+    std::cout<<"data: "<<current->data<<"; next: "<<current->next<<"\n";
+        
 }
 
 
