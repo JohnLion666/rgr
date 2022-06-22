@@ -8,7 +8,7 @@ int main(){
     myList.add2end(5);
     myList.add2end(6);
     myList.add2begin(1);
-    myList.add2pos(2, 2);
+    myList.add2pos(2, 9);
     // std::cout<<myList.first->prev<<'\n';
     // std::cout<<myList.last->next<<'\n';
 

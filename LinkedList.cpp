@@ -37,20 +37,21 @@ void LinkedList<type>::add2begin(type _data){
 }
 template<typename type>
 void LinkedList<type>::add2pos(type _data, int pos){
-    try{
+    if(this->counter >pos-1){
         int counter=0;
         element<type> *current = this->first;
-        while (counter<pos)
-        {
+        while (counter<pos-1){
+            counter++;
             current = current->next;
         }
         element<type>* next = current->next;
-        element<type>* prev = current;
-        prev->next = new element<type>(_data, next,nullptr);
-
-    }
-    catch(const std::exception& e){
-        std::cerr << e.what() << '\n';//скоріш за все буде  out of range list
+        
+        current->next = new element<type>(_data, next,nullptr);
+        this->counter++;
+    }else{
+        std::cerr<<"Exception! out of range adding to pos "<<pos<<" data "<<_data<<"\n";
+        std::cerr<<"Addin element at the end of list\n";
+        add2end(_data);
     }
     
 }
